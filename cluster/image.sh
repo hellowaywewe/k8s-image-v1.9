@@ -19,11 +19,18 @@ sudo docker tag  zhguokai/kube-scheduler-amd64:v1.9.2 gcr.io/google_containers/k
 sudo docker pull  zhguokai/kube-proxy-amd64:v1.9.2
 sudo docker tag  zhguokai/kube-proxy-amd64:v1.9.2 gcr.io/google_containers/kube-proxy-amd64:v1.9.2
 # app
-sudo docker pull  zhguokai/k8s-dns-dnsmasq-nanny-amd64:1.14.7
-sudo docker tag  zhguokai/k8s-dns-dnsmasq-nanny-amd64:1.14.7 gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.7
-sudo docker pull  zhguokai/k8s-dns-kube-dns-amd64:1.14.7
-sudo docker tag  zhguokai/k8s-dns-kube-dns-amd64:1.14.7 gcr.io/google_containers/k8s-dns-kube-dns-amd64:1.14.7
-sudo docker pull  zhguokai/k8s-dns-sidecar-amd64:1.14.7
-sudo docker tag  zhguokai/k8s-dns-sidecar-amd64:1.14.7 gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.7
-sudo docker pull  zhguokai/kubernetes-dashboard-amd64:v1.8.1
-sudo docker tag  zhguokai/kubernetes-dashboard-amd64:v1.8.1 gcr.io/google_containers/kubernetes-dashboard-amd64:v1.8.1
+#dashboard
+sudo docker pull  zhguokai/kubernetes-dashboard-amd64:v1.8.2
+sudo docker tag  zhguokai/kubernetes-dashboard-amd64:v1.8.2 k8s.gcr.io/kubernetes-dashboard-amd64:v1.8.2
+
+sudo docker pull  zhguokai/k8s-dns-dnsmasq-nanny-amd64:1.14.8
+sudo docker tag  zhguokai/k8s-dns-dnsmasq-nanny-amd64:1.14.8 gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.8
+sudo docker pull  zhguokai/k8s-dns-kube-dns-amd64:1.14.8
+sudo docker tag  zhguokai/k8s-dns-kube-dns-amd64:1.14.8 gcr.io/google_containers/k8s-dns-kube-dns-amd64:1.14.8
+sudo docker pull  zhguokai/k8s-dns-sidecar-amd64:1.14.8
+sudo docker tag  zhguokai/k8s-dns-sidecar-amd64:1.14.8 gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.8
+
+#callio
+sudo docker pull quay.io/calico/node:v3.0.1
+sudo docker pull quay.io/calico/cni:v2.0.0
+sudo docker pull quay.io/calico/kube-controllers:v2.0.0
