@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    scheduler.alpha.kubernetes.io/critical-pod: ""
+  creationTimestamp: null
+  labels:
+    component: kube-apiserver
+    tier: control-plane
+  name: kube-apiserver
+  namespace: kube-system
+spec:
+  containers:
+  - command:
+    - kube-apiserver
+    - --allow-privileged=true
+    - --etcd-servers=http://10.26.24.77:12379
+    - --secure-port=0
+    - --kubelet-https=false
+    - --insecure-bind-address=0.0.0.0
+    - --enable-swagger-ui=true
+    - --insecure-port=18080
+    - --port=18080
+    image: gcr.io/google_containers/kube-apiserver-amd64:v1.9.2
+    ports:
+      - containerPort: 18080
+        hostPort: 18080
+    livenessProbe:
+      failureThreshold: 8
+      httpGet:
+        host: 10.26.24.77
+        path: /healthz
+        port: 18080
+        scheme: HTTP
+      initialDelaySeconds: 15
+      timeoutSeconds: 15
+    name: kube-apiserver
+    resources:
+      requests:
+        cpu: 250m
+  hostNetwork: true
+status: {}

@@ -1,0 +1,19 @@
+
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+After=docker.service
+Requires=docker.service
+
+[Service]
+ExecStart=/usr/bin/kubelet \
+          --kubeconfig=/k8s/conf/kubelet-config.yaml  \
+          --fail-swap-on=false  \
+          --runtime-cgroups=/systemd/system.slice \
+          --kubelet-cgroups=/systemd/system.slice \
+          --pod-manifest-path=/k8s/manifest \
+          --v=4
+Restart=on-failure
+KillMode=process
+[Install]
+WantedBy=multi-user.target

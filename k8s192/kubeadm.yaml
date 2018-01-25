@@ -1,0 +1,7 @@
+apiVersion: kubeadm.k8s.io/v1alpha1
+kind: MasterConfiguration
+kubernetes-version: 1.9.0
+token: runhua.2017010203040506
+etcd:
+  extraArgs:
+    'listen-peer-urls': 'http://127.0.0.1:2380'
