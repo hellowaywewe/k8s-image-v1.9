@@ -20,6 +20,8 @@ roleRef:
   kind: ClusterRole
   name: system:node-proxier
   apiGroup: rbac.authorization.k8s.io
+# Please keep kube-proxy configuration in-sync with:
+# cluster/saltbase/salt/kube-proxy/kube-proxy.manifest
 ---
 apiVersion: extensions/v1beta1
 kind: DaemonSet
@@ -44,9 +46,10 @@ spec:
       annotations:
         scheduler.alpha.kubernetes.io/critical-pod: ''
     spec:
+      #  {{pod_priority}}
       hostNetwork: true
-      #nodeSelector:
-        #beta.kubernetes.io/kube-proxy-ds-ready: "true"
+      nodeSelector:
+        # beta.kubernetes.io/kube-proxy-ds-ready: "true"
       tolerations:
       - operator: "Exists"
         effect: "NoExecute"
@@ -61,7 +64,8 @@ spec:
         command:
         - /bin/sh
         - -c
-        - kube-proxy --master=http://115.28.130.193:18080
+        - kube-proxy --cluster-cidr=10.0.0.0/24 --master=http://10.26.24.77:18080  --oom-score-adj=-998  1>>/var/log/kube-proxy.log 2>&1
+        env:
         securityContext:
           privileged: true
         volumeMounts:
