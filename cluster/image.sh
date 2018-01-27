@@ -29,8 +29,3 @@ sudo docker pull  zhguokai/k8s-dns-kube-dns-amd64:1.14.8
 sudo docker tag  zhguokai/k8s-dns-kube-dns-amd64:1.14.8 gcr.io/google_containers/k8s-dns-kube-dns-amd64:1.14.8
 sudo docker pull  zhguokai/k8s-dns-sidecar-amd64:1.14.8
 sudo docker tag  zhguokai/k8s-dns-sidecar-amd64:1.14.8 gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.8
-
-#callio
-sudo docker pull quay.io/calico/node:v3.0.1
-sudo docker pull quay.io/calico/cni:v2.0.0
-sudo docker pull quay.io/calico/kube-controllers:v2.0.0
